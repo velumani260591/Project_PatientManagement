@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patient Registration Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      background-image: url('https://images.unsplash.com/photo-1588776814546-ec7f9e4c9f96?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .form-container {
+      max-width: 100%;
+      padding: 16px;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 12px 0 16px;
+      font-size: 18px;
+      color: #004080;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 400px;
+      margin: 40px auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+      margin-bottom: 2px;
+      font-weight: 500;
+    }
+body {
+  background-image: url('c:/hos.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .response-message {
+      text-align: center;
+      margin-top: 12px;
+      color: green;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Patient Registration Form</h2>
+
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div>
+        <label for="name">Patient Full Name</label>
+        <input id="name" type="text" name="name" [(ngModel)]="user.name" required placeholder="Enter patient's full name" />
+      </div>
+
+      <div>
+        <label for="age">Patient Age</label>
+        <input id="age" type="number" name="age" [(ngModel)]="user.age" required min="0" placeholder="Enter patient's age" />
+      </div>
+
+      <div>
+        <label for="email">Patient Email Address</label>
+        <input id="email" type="email" name="email" [(ngModel)]="user.email" required placeholder="Enter patient's email" />
+      </div>
+
+      <button type="submit" [disabled]="userForm.invalid">Register Patient</button>
+    </form>
+
+    <app-user-grid></app-user-grid>
+
+    <p *ngIf="responseMessage" class="response-message">
+      {{ responseMessage }}
+    </p>
+  </div>
+</body>
+</html>

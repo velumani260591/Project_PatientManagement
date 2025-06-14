@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hospital Patient List</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      background-image: url('https://images.unsplash.com/photo-1576765607924-b6f3c4f159b3?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      max-width: 95%;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #004080;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    thead {
+      background-color: #007bff;
+      color: white;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #eaeaea;
+      font-size: 14px;
+    }
+
+    tbody tr:hover {
+      background-color: #e8f0ff;
+      cursor: pointer;
+    }
+
+    .delete-icon {
+      color: #d11a2a;
+      cursor: pointer;
+      font-size: 18px;
+    }
+body {
+  background-image: url('c:/hos.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+    .delete-icon:hover {
+      color: #a50000;
+    }
+
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        margin-bottom: 16px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 14px;
+        background-color: #fff;
+      }
+
+      td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        font-weight: 500;
+      }
+
+      td::before {
+        position: absolute;
+        top: 14px;
+        left: 16px;
+        width: 45%;
+        font-weight: 700;
+        color: #004080;
+        white-space: nowrap;
+      }
+
+      td:nth-child(1)::before { content: "Patient Name"; }
+      td:nth-child(2)::before { content: "Age"; }
+      td:nth-child(3)::before { content: "Email"; }
+      td:nth-child(4)::before { content: "Action"; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Hospital Patient List</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Patient Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td>{{ user.name }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <span 
+                class="delete-icon" 
+                title="Remove Patient" 
+                (click)="deleteUser(i)"
+              >🗑️</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
